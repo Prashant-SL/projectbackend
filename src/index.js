@@ -6,12 +6,14 @@ const cors = require('cors');
 app.use(express.json());
 app.use(cors());
 
+const paymentRoutes = require('./payment');
 const dummyController = require('./controllers/dummy.controller');
 const userController = require('./controllers/user.controller');
 const { register, login } = require('./controllers/auth.controllers');
 var cartController = require('./controllers/cart.controller.js');
 var productController = require('./controllers/product.controller.js');
 
+app.use('/api/payment', paymentRoutes);
 app.use('/users', userController);
 app.use('/cart', cartController);
 app.use('/products', productController);
